@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kalkulator</title>
+    <link rel="stylesheet" href="./css/style.css">
+    <script defer src="./js/main.js"></script>
+    <link rel="shortcut icon" href="./img/munja-logo.png" type="image/x-icon">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Varela+Round&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <header class="logo">
+        <h1>KALKULATOR POTROŠNJE STRUJE</h1>
+    </header>
+    <main class="main">
+        <div class="container">
+            <form id="form" action="" class="form">
+                <div class="form-limiter">
+                    <div class="input-labels">
+                        <label for="obracun">Obračunski period:</label>
+                        <input class="inputFields" type="number" name="obracun" id="obracun" max="30" min="1" value="30"
+                            maxlength="2"
+                            oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);">
+                    </div>
+                    <div class="input-labels">
+                        <label for="brojilo">Vrsta brojila:</label>
+                        <select class="inputFields select" name="brojilo" id="brojilo" onchange="pokaziTarifu()">
+                            <option class="options" value="dt">dvotarifno</option>
+                            <option class="options" value="jt">jednotarifno</option>
+                        </select>
+                    </div>
+                    <div class="potrosnja-container">
+                        <div id="potrosnja" class="input-labels jednotarifna">
+                            <label>Jednotarifna Potrošnja:</label>
+                            <input class="inputFields" type="number" name="jtPotrosnja" id="jtPotrosnja" min="0"
+                                placeholder="0" maxlength="5"
+                                onkeydown="return event.keyCode !== 190 && event.keyCode !== 189 && event.keyCode !== 187"
+                                oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);">
+                        </div>
+    
+                        <div id="nizaPotrosnja" class="input-labels dvotarifna">
+                            <label>Potrošnja u nižoj tarifi:</label>
+                            <input class="inputFields" type="number" name="nizaTarifa" id="nizaTarifa" min="0"
+                                placeholder="0" maxlength="5"
+                                onkeydown="return event.keyCode !== 190 && event.keyCode !== 189 && event.keyCode !== 187"
+                                oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);">
+                        </div>
+                        <div id="visaPotrosnja" class="input-labels dvotarifna">
+                            <label for="visaTarifa">Potrošnja u višoj tarifi:</label>
+                            <input class="inputFields" type="number" name="visaTarifa" id="visaTarifa" min="0" maxlength="5"
+                                placeholder="0"
+                                onkeydown="return event.keyCode !== 190 && event.keyCode !== 189 && event.keyCode !== 187"
+                                oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);">
+                        </div>
+                    </div>
+                    <div class="input-labels">
+                        <label for="prikljucak">Vrsta priključka:</label>
+                        <select name="prikljucak" class="inputFields select" id="prikljucak" onchange="pokaziOS()">
+                            <option class="options" value="mf">monofazni</option>
+                            <option class="options" selected value="tf">trofazni</option>
+                        </select>
+                    </div>
+                    <div class="input-labels">
+                        <label for="osMF">Odobrena snaga:</label>
+                        <select name="os" id="osMF" class="inputFields select">
+                            <option class="options" value="2.30">2.30</option>
+                            <option class="options" value="3.68">3.68</option>
+                            <option class="options" value="4.60">4.60</option>
+                            <option class="options" value="5.75">5.75</option>
+                            <option class="options" value="7.36">7.36</option>
+                        </select>
+                        <select name="" id="osTF" class="inputFields select">
+                            <option class="options" selected value="6.90">6.90</option>
+                            <option class="options" value="11.04">11.04</option>
+                            <option class="options" value="13.80">13.80</option>
+                            <option class="options" value="17.25">17.25</option>
+                            <option class="options" value="22.08">22.08</option>
+                            <option class="options" value="24.15">24.15</option>
+                            <option class="options" value="27.60">27.60</option>
+                            <option class="options" value="34.50">34.50</option>
+                            <option class="options" value="43.47">43.47</option>
+                        </select>
+                    </div>
+                    <div class="input-labels rts">
+                        <label for="taksaRTS">Taksa za RTS:</label>
+                        <input class="inputFields checkbox" type="checkbox" checked value="299" name="taksaRTS"
+                            id="taksaRTS">
+                       
+                    </div>
+                </div>
+                <div class="buttons-container">
+                    <button id="btn" type="button" class="buttons">
+                        Izračunaj
+                    </button>
+                    <button id="btn1" type="button" class="buttons">
+                        Resetuj unos
+                    </button>
+                    <!--                 <button id="btn2" type="button" class="buttons">
+                        Sacuvaj
+                    </button> -->
+                </div>
+            </form>
+            <div class="table-container">
+                <table id="tabela" class="tabela">
+                    <tr>
+                        <th></th>
+                        <th></th>
+                        <th class="table-border">Utrošeno kW/kWh</th>
+                        <th class="table-border">Cena</th>
+                        <th class="table-border">Iznos</th>
+    
+                    </tr>
+                    <tr>
+                        <td class="table-border zelena" rowspan="3">Zelena zona</td>
+                        <td class="table-border">Niža tarifa</td>
+                        <td class="table-border" id="znu">0</td>
+                        <td class="table-border" id="znc" value="2.0840">2.0840 din.</td>
+                        <td class="table-border cena" id="zni">0.00 din.</td>
+                    </tr>
+                    <tr>
+                        <td class="table-border">Viša tarifa</td>
+                        <td class="table-border" id="zvu">0</td>
+                        <td class="table-border" id="zvc">8.3360 din.</td>
+                        <td class="table-border cena" id="zvi">0.00 din.</td>
+                    </tr>
+                    <tr>
+                        <td class="table-border">Jednotarifno</td>
+                        <td class="table-border" id="zjtu">0</td>
+                        <td class="table-border" id="zjtc">7.2940 din.</td>
+                        <td class="table-border cena" id="zjti">0.00 din.</td>
+                    </tr>
+    
+                    <tr>
+                        <td class="table-border plava" rowspan="3">Plava zona
+                        </td>
+                        <td class="table-border">Niža tarifa</td>
+                        <td class="table-border" id="pnu">0</td>
+                        <td class="table-border">3.1260 din.</td>
+                        <td class="table-border cena" id="pni">0.00 din.</td>
+                    </tr>
+                    <tr>
+                        <td class="table-border">Viša tarifa</td>
+                        <td class="table-border" id="pvu">0</td>
+                        <td class="table-border">12.5040 din.</td>
+                        <td class="table-border cena" id="pvi">0.00 din.</td>
+                    </tr>
+                    <tr>
+                        <td class="table-border">Jednotarifno</td>
+                        <td class="table-border" id="pjtu">0</td>
+                        <td class="table-border">10.9410 din.</td>
+                        <td class="table-border cena" id="pjti">0.00 din.</td>
+                    </tr>
+    
+                    <tr>
+                        <td class="table-border crvena" rowspan="3">Crvena zona
+                        </td>
+                        <td class="table-border">Niža tarifa</td>
+                        <td class="table-border" id="cnu">0</td>
+                        <td class="table-border">6.2520 din.</td>
+                        <td class="table-border cena" id="cni">0.00 din.</td>
+                    </tr>
+                    <tr>
+                        <td class="table-border">Viša tarifa</td>
+                        <td class="table-border" id="cvu">0</td>
+                        <td class="table-border">25.0080 din.</td>
+                        <td class="table-border cena" id="cvi">0.00 din.</td>
+                    </tr>
+                    <tr>
+                        <td class="table-border">Jednotarifno</td>
+                        <td class="table-border" id="cjtu">0</td>
+                        <td class="table-border">21.8820 din.</td>
+                        <td class="table-border cena" id="cjti">0.00 din.</td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td class="table-border ukupno">Ukupno</td>
+                        <td class="table-border ukupno" id="ukupnoKW">0 kW/kWh</td>
+                        <td class="table-border cena ukupno" id="ukupnoCena" colspan="2">0.00 din.</td>
+                    </tr>
+    
+                </table>
+            </div>
+        </div>
+        
+        
+        <div class="tesla">
+            <div class="add-container">
+                <table class="tabela">
+                    <tr>
+                        <th></th>
+                        <th class="table-border">kW/kWh</th>
+                        <th class="table-border">Cena</th>
+                        <th class="table-border">Iznos</th>
+
+                    </tr>
+                    <tr>
+                        <td class="table-border naslov">Obracunska snaga</td>
+                        <td class="table-border" id="OSu">0</td>
+                        <td class="table-border cena" id="osPoJedinici"></td>
+                        <td class="table-border cena" id="calcOS">0.00 din.</td>
+                    </tr>
+                    <tr class="plava-linija">
+                        <td class="table-border naslov beli-font" colspan="3">Trošak garantovanog snabdevača</td>
+                        <td class="table-border cena beli-font" id="troGarSna">0.00 din.</td>
+                    </tr>
+                    <tr>
+                        <td class="table-border naslov">Naknada za povl. proiz. el. energije</td>
+                        <td class="table-border" id="nakZaPovUnos">0</td>
+                        <td class="table-border cena" id="nakZaPovJedinica">0.801 din.</td>
+                        <td class="table-border cena" id="nakZaPovIznos">0.00 din.</td>
+                    </tr>
+                    <tr class="plava-linija">
+                        <td class="table-border naslov beli-font">Naknada za unapređenje en. ef.
+                        </td>
+                        <td class="table-border beli-font" id="nakZaUnEfUnos">0</td>
+                        <td class="table-border cena beli-font" id="nakZaUnEfJedinica">0.015 din.</td>
+                        <td class="table-border cena beli-font" id="nakZaUnEfIznos">0.00 din.</td>
+                    </tr>
+                    <tr>
+                        <td class="table-border naslov" colspan="3">Osnovica za obračun akcize</td>
+                        <td class="table-border cena" id="osnovica">0.00 din.</td>
+                    </tr>
+                    <tr class="plava-linija">
+                        <td class="table-border naslov beli-font" colspan="3">Iznos akcize (7.5%)</td>
+                        <td class="table-border cena beli-font" id="iznosAkcize">0.00 din.</td>
+                    </tr>
+                    <tr>
+                        <td class="table-border naslov" colspan="3" >Osnovica za obračun PDV-a</td>
+                        <td class="table-border cena" id="osnovicaPDV">0.00 din.</td>
+                    </tr>
+                    <tr class="plava-linija">
+                        <td class="table-border naslov beli-font" colspan="3">PDV (20%)</td>
+                        <td class="table-border cena beli-font" id="PDV">0.00 din.</td>
+                    </tr>
+                    <tr>
+                        <td class="table-border naslov" colspan="3">Zaduženje za obračunski period</td>
+                        <td class="table-border cena" id="zaduzenje">0.00 din.</td>
+                    </tr>
+                    <tr class="plava-linija">
+                        <td class="table-border naslov beli-font" colspan="3">Taksa za RTS</td>
+                        <td class="table-border cena beli-font" id="taksaZaRTS">0.00 din.</td>
+                    </tr>
+                    <tr>
+                        <td class="table-border naslov ukupno" colspan="3">Ukupno zaduženje za obr. period</td>
+                        <td class="table-border cena ukupno" id="ukupnoZaduzenje">0.00 din.</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+
+    </main>
+</body>
+</html>
