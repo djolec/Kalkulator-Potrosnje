@@ -91,13 +91,6 @@ let zaduzenjeBroj;
 let ukupnoZaduzenje = document.getElementById("ukupnoZaduzenje")
 let ukupnoZaduzenjeBroj;
 
-document.getElementById("jtPotrosnja").addEventListener("keypress", function(event) {
-  var key = event.keyCode;
-  // Only allow numbers to be entered
-  if (key < 48 || key > 57) {
-    event.preventDefault();
-  }
-});
 
 function pokaziTarifu() {
   if (brojilo.value == "dt") {
