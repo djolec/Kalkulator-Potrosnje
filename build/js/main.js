@@ -91,6 +91,13 @@ let zaduzenjeBroj;
 let ukupnoZaduzenje = document.getElementById("ukupnoZaduzenje")
 let ukupnoZaduzenjeBroj;
 
+function isNumberKey(evt) {
+  var charCode = (evt.which) ? evt.which : evt.keyCode
+  if (charCode > 31 && (charCode < 48 || charCode > 57))
+    return false;
+  return true;
+}
+
 function pokaziTarifu() {
   if (brojilo.value == "dt") {
     potrosnja.style.visibility = "hidden";
