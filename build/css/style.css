@@ -87,8 +87,8 @@ body {
 .potrosnja-container{
   display: flex;
   flex-direction: column;
-  gap: 10px;
-  height: 200px;
+justify-content: space-between;
+  height: 150px;
 }
 
 .inputFields{
