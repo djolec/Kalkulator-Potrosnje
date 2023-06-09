@@ -16,19 +16,30 @@ jtPotrosnja.addEventListener('input', function() {
     
     if (inputValue.startsWith('0')) {
       this.value = inputValue.slice(1);
-    }
-  const filteredValue = inputValue.replace(/^[0-9]+$/, '');
+    } else {
+  const filteredValue = inputValue.replace(/[^0-9]/g, '');
   this.value = filteredValue;
+}
 });
 nizaTarifaEl.addEventListener('input', function() {
   const inputValue = this.value;
-  const filteredValue = inputValue.replace(/[^0-9]/g, '');
-  this.value = filteredValue;
+    
+  if (inputValue.startsWith('0')) {
+    this.value = inputValue.slice(1);
+  } else {
+const filteredValue = inputValue.replace(/[^0-9]/g, '');
+this.value = filteredValue;
+}
 });
 visaTarifaEl.addEventListener('input', function() {
   const inputValue = this.value;
-  const filteredValue = inputValue.replace(/[^0-9]/g, '');
-  this.value = filteredValue;
+    
+  if (inputValue.startsWith('0')) {
+    this.value = inputValue.slice(1);
+  } else {
+const filteredValue = inputValue.replace(/[^0-9]/g, '');
+this.value = filteredValue;
+}
 });
 
 let nizaPotrosnja = document.getElementById("nizaPotrosnja");
