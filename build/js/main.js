@@ -12,8 +12,12 @@ let visaTarifaEl = document.getElementById("visaTarifa")
 const inputField = document.getElementById('input-field');
 
 jtPotrosnja.addEventListener('input', function() {
-  const inputValue = this.value;
-  const filteredValue = inputValue.replace(/^[1-9][0-9]*$/, '');
+    const inputValue = this.value;
+    
+    if (inputValue.startsWith('0')) {
+      this.value = inputValue.slice(1);
+    }
+  const filteredValue = inputValue.replace(/^[0-9]+$/, '');
   this.value = filteredValue;
 });
 nizaTarifaEl.addEventListener('input', function() {
