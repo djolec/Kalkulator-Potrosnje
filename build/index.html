@@ -35,12 +35,11 @@
                             <option class="options" value="jt">jednotarifno</option>
                         </select>
                     </div>
-                    <div class="potrosnja-container"> <!-- onkeydown="return event.keyCode !== 190 && event.keyCode !== 189 && event.keyCode !== 187" -->
+                    <div class="potrosnja-container">
                         <div id="potrosnja" class="input-labels jednotarifna">
                             <label>Jednotarifna Potrošnja:</label>
                             <input class="inputFields" type="number" name="jtPotrosnja" id="jtPotrosnja" min="0"
                                 placeholder="0" maxlength="5"
-                               
                                 oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);">
                         </div>
     
@@ -48,14 +47,12 @@
                             <label>Potrošnja u nižoj tarifi:</label>
                             <input class="inputFields" type="number" name="nizaTarifa" id="nizaTarifa" min="0"
                                 placeholder="0" maxlength="5"
-                                onkeydown="return event.keyCode !== 190 && event.keyCode !== 189 && event.keyCode !== 187"
                                 oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);">
                         </div>
                         <div id="visaPotrosnja" class="input-labels dvotarifna">
                             <label for="visaTarifa">Potrošnja u višoj tarifi:</label>
                             <input class="inputFields" type="number" name="visaTarifa" id="visaTarifa" min="0" maxlength="5"
                                 placeholder="0"
-                                onkeydown="return event.keyCode !== 190 && event.keyCode !== 189 && event.keyCode !== 187"
                                 oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);">
                         </div>
                     </div>
@@ -95,15 +92,12 @@
                     </div>
                 </div>
                 <div class="buttons-container">
-                    <button id="btn" type="button" class="buttons">
+                    <button id="btn" type="submit" class="buttons">
                         Izračunaj
                     </button>
                     <button id="btn1" type="button" class="buttons">
                         Resetuj unos
                     </button>
-                    <!--                 <button id="btn2" type="button" class="buttons">
-                        Sacuvaj
-                    </button> -->
                 </div>
             </form>
             <div class="table-container">

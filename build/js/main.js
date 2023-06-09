@@ -7,9 +7,21 @@ let form = document.getElementById("form");
 let brojilo = document.getElementById("brojilo");
 
 let jtPotrosnja = document.getElementById("jtPotrosnja");
+let nizaTarifaEl = document.getElementById("nizaTarifa")
+let visaTarifaEl = document.getElementById("visaTarifa")
 const inputField = document.getElementById('input-field');
 
 jtPotrosnja.addEventListener('input', function() {
+  const inputValue = this.value;
+  const filteredValue = inputValue.replace(/[^0-9]/g, '');
+  this.value = filteredValue;
+});
+nizaTarifaEl.addEventListener('input', function() {
+  const inputValue = this.value;
+  const filteredValue = inputValue.replace(/[^0-9]/g, '');
+  this.value = filteredValue;
+});
+visaTarifaEl.addEventListener('input', function() {
   const inputValue = this.value;
   const filteredValue = inputValue.replace(/[^0-9]/g, '');
   this.value = filteredValue;
