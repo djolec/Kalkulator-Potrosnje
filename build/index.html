@@ -35,12 +35,12 @@
                             <option class="options" value="jt">jednotarifno</option>
                         </select>
                     </div>
-                    <div class="potrosnja-container">
+                    <div class="potrosnja-container"> <!-- onkeydown="return event.keyCode !== 190 && event.keyCode !== 189 && event.keyCode !== 187" -->
                         <div id="potrosnja" class="input-labels jednotarifna">
                             <label>Jednotarifna Potrošnja:</label>
                             <input class="inputFields" type="number" name="jtPotrosnja" id="jtPotrosnja" min="0"
                                 placeholder="0" maxlength="5"
-                                onkeydown="return event.keyCode !== 190 && event.keyCode !== 189 && event.keyCode !== 187"
+                               
                                 oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);">
                         </div>
     
