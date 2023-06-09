@@ -19,9 +19,6 @@ jtPotrosnja.addEventListener('input', function() {
     } else {
   const filteredValue = inputValue.replace(/[^0-9]/g, '');
   this.value = filteredValue;
-  if(e && e.keyCode == 13) {
-    form.submit()
-  }
 }
 });
 nizaTarifaEl.addEventListener('input', function() {
@@ -70,7 +67,6 @@ let taksaRTS = document.getElementById("taksaRTS");
 let taksaRTSbroj;
 let taksaZaRTS = document.getElementById("taksaZaRTS")
 
-console.log(taksaRTSbroj)
 
 let nizaTarifa = parseInt(document.getElementById("nizaTarifa").value);
 if (isNaN(nizaTarifa)) {
@@ -158,7 +154,6 @@ pokaziOS();
 // RESETOVANJE UNOSA
 
 btn1.addEventListener("click", function (event) {
-  /*   document.getElementById("form").reset(); */
 
   function resetUnos() {
     document.getElementById("nizaTarifa").value = "";
@@ -217,9 +212,7 @@ btn1.addEventListener("click", function (event) {
 });
 // KRAJ RESETOVANJA UNOSA
 
-function submitOnEnter(e) {
 
-}
 
 btn.addEventListener("click", function (event) {
   event.preventDefault();
@@ -646,4 +639,18 @@ btn.addEventListener("click", function (event) {
 
   ukupnoZaduzenjeBroj = taksaRTSbroj + zaduzenjeBroj
   ukupnoZaduzenje.textContent = ukupnoZaduzenjeBroj.toFixed(2) + " din."
+});
+
+document.addEventListener('keypress', (event)=>{
+
+  // event.keyCode or event.which  property will have the code of the pressed key
+  let keyCode = event.keyCode ? event.keyCode : event.which;
+
+  // 13 points the enter key
+  if(keyCode === 13) {
+    console.log(keyCode)
+    // call click function of the buttonn 
+    btn.click();
+  }
+    
 });
