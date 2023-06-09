@@ -6,6 +6,15 @@ let form = document.getElementById("form");
 
 let brojilo = document.getElementById("brojilo");
 
+let jtPotrosnja = document.getElementById("jtPotrosnja");
+const inputField = document.getElementById('input-field');
+
+jtPotrosnja.addEventListener('input', function() {
+  const inputValue = this.value;
+  const filteredValue = inputValue.replace(/[^1-9\d]/g, '');
+  this.value = filteredValue;
+});
+
 let nizaPotrosnja = document.getElementById("nizaPotrosnja");
 let visaPotrosnja = document.getElementById("visaPotrosnja");
 let potrosnja = document.getElementById("potrosnja");
