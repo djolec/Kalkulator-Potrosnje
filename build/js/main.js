@@ -649,7 +649,7 @@ document.addEventListener("keypress", function(event) {
   if (event.key === "Enter") {
     console.log("Enter")
     btn.click();
-  } else if (event.key == 9 ) {
+  } else if (event.keyCode == 9 ) {
     console.log("Enter")
     btn.click();
   }
