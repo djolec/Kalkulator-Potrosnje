@@ -6,14 +6,15 @@ let form = document.getElementById("form");
 
 let brojilo = document.getElementById("brojilo");
 
-let jtPotrosnja = document.getElementById("jtPotrosnja");
+let jtPostrosnjaEl = document.getElementById("jtPostrosnja");
 let nizaTarifaEl = document.getElementById("nizaTarifa")
 let visaTarifaEl = document.getElementById("visaTarifa")
+
 const inputField = document.getElementById('input-field');
 
-jtPotrosnja.addEventListener('input', function() {
+document.getElementById("jtPotrosnja").addEventListener('input', function() {
     const inputValue = this.value;
-
+    
     if (inputValue.startsWith('0')) {
       this.value = inputValue.slice(1);
     } else {
@@ -32,13 +33,13 @@ this.value = filteredValue;
 }
 });
 visaTarifaEl.addEventListener('input', function() {
-  const inputValue = this.value;
+    const inputValue = this.value;
     
-  if (inputValue.startsWith('0')) {
-    this.value = inputValue.slice(1);
-  } else {
-const filteredValue = inputValue.replace(/[^0-9]/g, '');
-this.value = filteredValue;
+    if (inputValue.startsWith('0')) {
+      this.value = inputValue.slice(1);
+    } else {
+  const filteredValue = inputValue.replace(/[^0-9]/g, '');
+  this.value = filteredValue;
 }
 });
 
@@ -67,6 +68,7 @@ let taksaRTS = document.getElementById("taksaRTS");
 let taksaRTSbroj;
 let taksaZaRTS = document.getElementById("taksaZaRTS")
 
+console.log(taksaRTSbroj)
 
 let nizaTarifa = parseInt(document.getElementById("nizaTarifa").value);
 if (isNaN(nizaTarifa)) {
@@ -154,6 +156,7 @@ pokaziOS();
 // RESETOVANJE UNOSA
 
 btn1.addEventListener("click", function (event) {
+  /*   document.getElementById("form").reset(); */
 
   function resetUnos() {
     document.getElementById("nizaTarifa").value = "";
@@ -211,8 +214,6 @@ btn1.addEventListener("click", function (event) {
   ukupnoZaduzenje.textContent = "0.00 din."
 });
 // KRAJ RESETOVANJA UNOSA
-
-
 
 btn.addEventListener("click", function (event) {
   event.preventDefault();
@@ -641,16 +642,15 @@ btn.addEventListener("click", function (event) {
   ukupnoZaduzenje.textContent = ukupnoZaduzenjeBroj.toFixed(2) + " din."
 });
 
-document.addEventListener('keypress', (event)=>{
 
-  // event.keyCode or event.which  property will have the code of the pressed key
-  let keyCode = event.keyCode ? event.keyCode : event.which;
 
-  // 13 points the enter key
-  if(keyCode === KeyEvent.KEYCODE_ENTER) {
-    console.log(keyCode)
-    // call click function of the buttonn 
+
+document.addEventListener("keypress", function(event) {
+  if (event.key === "Enter") {
+    console.log("Enter")
+    btn.click();
+  } else if (event.key == 9 ) {
+    console.log("Enter")
     btn.click();
   }
-    
 });
