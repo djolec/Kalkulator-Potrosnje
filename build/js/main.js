@@ -11,7 +11,7 @@ const inputField = document.getElementById('input-field');
 
 jtPotrosnja.addEventListener('input', function() {
   const inputValue = this.value;
-  const filteredValue = inputValue.replace(/[^1-9\d]/g, '');
+  const filteredValue = inputValue.replace(/[^1-9\d]|(?<=^\d)0+/g, '');
   this.value = filteredValue;
 });
 
