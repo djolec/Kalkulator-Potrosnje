@@ -13,12 +13,15 @@ const inputField = document.getElementById('input-field');
 
 jtPotrosnja.addEventListener('input', function() {
     const inputValue = this.value;
-    
+
     if (inputValue.startsWith('0')) {
       this.value = inputValue.slice(1);
     } else {
   const filteredValue = inputValue.replace(/[^0-9]/g, '');
   this.value = filteredValue;
+  if(e && e.keyCode == 13) {
+    form.submit()
+  }
 }
 });
 nizaTarifaEl.addEventListener('input', function() {
@@ -213,6 +216,10 @@ btn1.addEventListener("click", function (event) {
   ukupnoZaduzenje.textContent = "0.00 din."
 });
 // KRAJ RESETOVANJA UNOSA
+
+function submitOnEnter(e) {
+
+}
 
 btn.addEventListener("click", function (event) {
   event.preventDefault();
