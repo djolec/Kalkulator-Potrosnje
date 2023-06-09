@@ -6,13 +6,11 @@ let form = document.getElementById("form");
 
 let brojilo = document.getElementById("brojilo");
 
-let jtPostrosnjaEl = document.getElementById("jtPostrosnja");
+let jtPotrosnjaEl = document.getElementById("jtPotrosnja");
 let nizaTarifaEl = document.getElementById("nizaTarifa")
 let visaTarifaEl = document.getElementById("visaTarifa")
 
-const inputField = document.getElementById('input-field');
-
-document.getElementById("jtPotrosnja").addEventListener('input', function() {
+jtPotrosnjaEl.addEventListener('input', function() {
     const inputValue = this.value;
     
     if (inputValue.startsWith('0')) {
@@ -641,9 +639,6 @@ btn.addEventListener("click", function (event) {
   ukupnoZaduzenjeBroj = taksaRTSbroj + zaduzenjeBroj
   ukupnoZaduzenje.textContent = ukupnoZaduzenjeBroj.toFixed(2) + " din."
 });
-
-
-
 
 document.addEventListener("keypress", function(event) {
   if (event.key === "Enter") {
