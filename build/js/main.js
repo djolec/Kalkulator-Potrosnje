@@ -13,7 +13,7 @@ const inputField = document.getElementById('input-field');
 
 jtPotrosnja.addEventListener('input', function() {
   const inputValue = this.value;
-  const filteredValue = inputValue.replace(/[^0-9]/g, '');
+  const filteredValue = inputValue.replace(/^(?!0)\d+$/, '');
   this.value = filteredValue;
 });
 nizaTarifaEl.addEventListener('input', function() {
