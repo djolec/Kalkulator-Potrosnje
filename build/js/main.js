@@ -647,7 +647,7 @@ document.addEventListener('keypress', (event)=>{
   let keyCode = event.keyCode ? event.keyCode : event.which;
 
   // 13 points the enter key
-  if(keyCode === 13) {
+  if(keyCode === 66) {
     console.log(keyCode)
     // call click function of the buttonn 
     btn.click();
