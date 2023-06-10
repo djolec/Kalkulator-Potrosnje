@@ -12,10 +12,10 @@ let visaTarifaEl = document.getElementById("visaTarifa")
 
 jtPotrosnjaEl.addEventListener('input', function() {
     const inputValue = this.value;
-    
     if (inputValue.startsWith('0')) {
       this.value = inputValue.slice(1);
-    } else {
+    }
+    else {
   const filteredValue = inputValue.replace(/[^0-9]/g, '');
   this.value = filteredValue;
 }
@@ -65,8 +65,6 @@ let prikljucak = document.getElementById("prikljucak");
 let taksaRTS = document.getElementById("taksaRTS");
 let taksaRTSbroj;
 let taksaZaRTS = document.getElementById("taksaZaRTS")
-
-console.log(taksaRTSbroj)
 
 let nizaTarifa = parseInt(document.getElementById("nizaTarifa").value);
 if (isNaN(nizaTarifa)) {
@@ -132,7 +130,6 @@ function pokaziTarifu() {
     potrosnja.style.visibility = "hidden";
     nizaPotrosnja.style.visibility = "visible";
     visaPotrosnja.style.visibility = "visible";
-    console.log(brojilo.value);
   } else {
     potrosnja.style.visibility = "visible";
     nizaPotrosnja.style.visibility = "hidden";
@@ -184,7 +181,7 @@ btn1.addEventListener("click", function (event) {
   cvu.innerHTML = 0;
   cvi.innerHTML = "0.00 din.";
   document.getElementById("ukupnoKW").innerHTML = "0 kW/kWh";
-  document.getElementById("ukupnoCena").innerHTML = "0.00 din";
+  document.getElementById("ukupnoCena").innerHTML = "0.00 din.";
 
   odobrenaSnagaCena.textContent = "0.00 din.";
   odobrenaSnagaUtrosak.textContent = 0;
@@ -192,7 +189,7 @@ btn1.addEventListener("click", function (event) {
   troGarSna.textContent = "0.00 din.";
 
   nakZaPovUnos.textContent = 0;
-  nakZaPovIznos.textContent = "0.00 din";
+  nakZaPovIznos.textContent = "0.00 din.";
 
   nakZaUnEfUnos.textContent = 0;
   nakZaUnEfIznos.textContent = "0.00 din.";
@@ -642,7 +639,6 @@ btn.addEventListener("click", function (event) {
 
 document.addEventListener("keypress", function(event) {
   if (event.key === "Enter") {
-    console.log("Enter")
     btn.click();
   }
 });
